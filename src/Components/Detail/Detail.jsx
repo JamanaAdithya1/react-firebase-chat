@@ -1,4 +1,4 @@
-import "./Detail.css"
+import "./Detail.css";
 
 const Detail = () => {
   return (
@@ -29,33 +29,44 @@ const Detail = () => {
           <div className="photos">
             <div className="photoItem">
               <div className="photoDetail">
-                <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202404/virat-kohli-061308633-16x9_0.jpg?VersionId=wwIZTrh1vnpjFczjwAJCROXi7evBNuNo&size=690:388" alt="" />
+                <img
+                  src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202404/virat-kohli-061308633-16x9_0.jpg?VersionId=wwIZTrh1vnpjFczjwAJCROXi7evBNuNo&size=690:388"
+                  alt=""
+                />
                 <span>Image Details</span>
               </div>
-              <img src="./download.png" alt="" />
+              <img src="./download.png" className="icon" alt="" />
             </div>
             <div className="photoItem">
               <div className="photoDetail">
-                <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202404/virat-kohli-061308633-16x9_0.jpg?VersionId=wwIZTrh1vnpjFczjwAJCROXi7evBNuNo&size=690:388" alt="" />
+                <img
+                  src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202404/virat-kohli-061308633-16x9_0.jpg?VersionId=wwIZTrh1vnpjFczjwAJCROXi7evBNuNo&size=690:388"
+                  alt=""
+                />
                 <span>Image Details</span>
               </div>
-              <img src="./download.png" alt="" />
+              <img src="./download.png" className="icon" alt="" />
             </div>
             <div className="photoItem">
               <div className="photoDetail">
-                <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202404/virat-kohli-061308633-16x9_0.jpg?VersionId=wwIZTrh1vnpjFczjwAJCROXi7evBNuNo&size=690:388" alt="" />
+                <img
+                  src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202404/virat-kohli-061308633-16x9_0.jpg?VersionId=wwIZTrh1vnpjFczjwAJCROXi7evBNuNo&size=690:388"
+                  alt=""
+                />
                 <span>Image Details</span>
               </div>
-              <img src="./download.png" alt="" />
+              <img src="./download.png" className="icon" alt="" />
             </div>
             <div className="photoItem">
               <div className="photoDetail">
-                <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202404/virat-kohli-061308633-16x9_0.jpg?VersionId=wwIZTrh1vnpjFczjwAJCROXi7evBNuNo&size=690:388" alt="" />
+                <img
+                  src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202404/virat-kohli-061308633-16x9_0.jpg?VersionId=wwIZTrh1vnpjFczjwAJCROXi7evBNuNo&size=690:388"
+                  alt=""
+                />
                 <span>Image Details</span>
               </div>
-              <img src="./download.png" alt="" />
+              <img src="./download.png" className="icon" alt="" />
             </div>
-            
           </div>
         </div>
         <div className="option">
@@ -64,11 +75,10 @@ const Detail = () => {
             <img src="./arrowUp.png" alt="" />
           </div>
         </div>
-        <button>Block User</button>
       </div>
+      <button>Block User</button>
     </div>
+  );
+};
 
-  )
-}
-
-export default Detail
+export default Detail;

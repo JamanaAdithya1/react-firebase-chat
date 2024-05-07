@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Chat.css";
 import EmojiPicker from "emoji-picker-react"; // A frameWork in react to get the emojis.
 
 const Chat = () => {
   const [openEmoji, setOpenEmoji] = useState(false); // To control the opening and closing of the Emoji Tab.
   const [text, setText] = useState(""); //To fetch the input typed by the user in the sendMessage input box.
-  console.log(text);  
+
+  const endRef = useRef(null); // useRef(null) initializes the endref to null which means currently endRef isn't pointing to any DOM element.  
+  
+  useEffect(()=>{
+    endRef.current?.scrollIntoView({behavior: "smooth"}) // this function access the current element the endRef is pointing to which is the <div> tag and the scrollIntoView function scrolls the div from first to last in a smooth transition.
+  })
   const handleEmoji = (e) => { // To append the emoji selected by the user with the current text entered in the input box.
     setText((prev) => prev + e.emoji);
     setOpenEmoji(false); 
@@ -54,6 +59,7 @@ const Chat = () => {
             <span>1 min ago</span> {/*The time of the Msg*/}
           </div>
         </div>
+        <div ref={endRef}></div> {/*"ref" is used to create a reference to a DOM element in react. */}
       </div>
       <div className="bottom">
         <div className="icons">
