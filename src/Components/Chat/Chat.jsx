@@ -26,7 +26,35 @@ const Chat = () => {
           <img src="./info.png" alt="" />
         </div>
       </div>
-      <div className="centre"></div>
+      <div className="centre">
+        <div className="message">
+          <img src="./avatar.png" alt="" srcset="" />
+          <div className="texts">
+            <p>Hello..! How are you.</p>
+            <span>1 min ago</span> {/*The time of the Msg*/}
+          </div>
+        </div>
+        <div className="message own">
+          <div className="texts">
+            <p>Hello..! How are you.</p>
+            <span>1 min ago</span> {/*The time of the Msg*/}
+          </div>
+        </div>
+        <div className="message">
+          <img src="./avatar.png" alt="" srcset="" />
+          <div className="texts">
+            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202404/virat-kohli-061308633-16x9_0.jpg?VersionId=wwIZTrh1vnpjFczjwAJCROXi7evBNuNo&size=690:388" alt="" srcset="" />
+            <p>Hello..! How are you.</p>
+            <span>1 min ago</span> {/*The time of the Msg*/}
+          </div>
+        </div>
+        <div className="message own">
+          <div className="texts">
+            <p>Hello..! How are you.</p>
+            <span>1 min ago</span> {/*The time of the Msg*/}
+          </div>
+        </div>
+      </div>
       <div className="bottom">
         <div className="icons">
           <img src="./img.png" alt="" />
@@ -36,7 +64,7 @@ const Chat = () => {
         <input type="text" placeholder="Type a message" value={text} onChange={(e) => {setText(e.target.value)}}/> 
         {/* The onChange Function is used to return the text entered by the user in the input box, e.target.value returns the value(text) entered. */}
         <div className="emoji">
-          <img src="./emoji.png" alt="" onClick={() => {setOpenEmoji(!openEmoji)}} />
+          <img src="./emoji.png" alt="" onClick={() => {setOpenEmoji(!openEmoji)}} /> 
           <div className="picker">
             <EmojiPicker open = {openEmoji} onEmojiClick={handleEmoji}/> 
             {/*The "open" function is used to display/Not display the html elements, onEmojiClick Event gets the selected emoji by the user */}
