@@ -22,7 +22,7 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 25px;
 
     .option {
       .title {
@@ -84,7 +84,7 @@
       }
     }
   }
-  button {
+  button { 
     width: 260px;
     padding: 10px 20px;
     margin-left: 29px;
@@ -96,6 +96,11 @@
 
     &:hover {
       background-color: red;
+    }
+
+    &.logout{
+      margin-top: 20px;
+      background-color: #1a73e8;
     }
   }
 }
