@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./login.css"
+import { toast } from "react-toastify";
 
 const Login = () => {
     const[avatar, setAvatar] = useState({ // To set the profile pic for the first time,if the user wants to register.
@@ -15,12 +16,16 @@ const Login = () => {
             })
         }
     }
+
+    const handleLogin = e => {
+        e.preventDefault();
+    }
     
   return (
     <div className="Login">
         <div className="item">
             <h2>Welcome back..!</h2>
-            <form action="">
+            <form onSubmit={handleLogin}>
                 <input type="text" placeholder="Email" name="email" />
                 <input type="password" placeholder="Password" name="password" />
                 <button>Sign In</button>
