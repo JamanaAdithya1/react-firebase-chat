@@ -5,7 +5,7 @@ const Detail = () => {
   return (
     <div className="Detail">
       <div className="user">
-        <img src="./avatar.png" alt="" srcset="" />
+        <img src="./avatar.png" alt="" />
         <h2>Manoj</h2>
         <p>I am Manoj.</p>
       </div>
@@ -78,7 +78,9 @@ const Detail = () => {
         </div>
       </div>
       <button>Block User</button>
-      <button className="logout" onClick={() => auth.signOut()}>Log out</button>
+      <button className="logout" onClick={() => auth.signOut()}>
+        Log out
+      </button>
     </div>
   );
 };

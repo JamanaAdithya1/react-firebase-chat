@@ -33,7 +33,7 @@ const Chat = () => {
       </div>
       <div className="centre">
         <div className="message">
-          <img src="./avatar.png" alt="" srcset="" />
+          <img src="./avatar.png" alt=""/>
           <div className="texts">
             <p>Hello..! How are you.</p>
             <span>1 min ago</span> {/*The time of the Msg*/}
@@ -46,9 +46,9 @@ const Chat = () => {
           </div>
         </div>
         <div className="message">
-          <img src="./avatar.png" alt="" srcset="" />
+          <img src="./avatar.png" alt=""/>
           <div className="texts">
-            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202404/virat-kohli-061308633-16x9_0.jpg?VersionId=wwIZTrh1vnpjFczjwAJCROXi7evBNuNo&size=690:388" alt="" srcset="" />
+            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202404/virat-kohli-061308633-16x9_0.jpg?VersionId=wwIZTrh1vnpjFczjwAJCROXi7evBNuNo&size=690:388" alt=""/>
             <p>Hello..! How are you.</p>
             <span>1 min ago</span> {/*The time of the Msg*/}
           </div>
