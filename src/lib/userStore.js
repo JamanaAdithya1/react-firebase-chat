@@ -1,5 +1,6 @@
 import { doc,  getDoc } from 'firebase/firestore';
-import { create } from 'zustand'
+import {db} from "./firebase";
+import { create } from 'zustand';
 
 export const useUserStore = create((set) => ({
   currentUser: null,

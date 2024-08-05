@@ -12,10 +12,12 @@ import upload from "../../lib/upload";
 const Login = () => {
     const[avatar, setAvatar] = useState({ // To set the profile pic for the first time,if the user wants to register.
         file: null, 
-        url: ""
+        url: "",
     })
 
-    const handleAvatar = e => { // To select the image and pass it to the input label.
+    const [loading, setLoading] = useState(false);
+
+    const handleAvatar = (e) => { // To select the image and pass it to the input label.
         if(e.target.files[0]){ // returns the file selected.
             setAvatar({
                 file: e.target.files[0],
@@ -24,21 +26,11 @@ const Login = () => {
         }
     }
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target)
-        const {email, password} = Object.fromEntries(formData);
-        try {
-            await signInWithEmailAndPassword(auth, email, password);
 
-        } catch (error) {
-            console.log(error);
-            toast.error(error.message);
-        }
-    }
 
     const handleRegister = async (e) => {
         e.preventDefault();
+        setLoading(true);
         const formData = new FormData(e.target)
         
         const {username, email, password} = Object.fromEntries(formData);
@@ -63,6 +55,24 @@ const Login = () => {
         } catch (err) {
             console.log(err);
             toast.error(err.message)
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        const formData = new FormData(e.target);
+        const {email, password} = Object.fromEntries(formData);
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+
+        } catch (error) {
+            console.log(error);
+            toast.error(error.message);
+        } finally {
+            setLoading(false);
         }
     }
     
@@ -73,7 +83,7 @@ const Login = () => {
             <form onSubmit={handleLogin}>
                 <input type="text" placeholder="Email" name="email" />
                 <input type="password" placeholder="Password" name="password" />
-                <button>Sign In</button>
+                <button disabled = {loading} > {loading ? "loading" : "Sign In"}</button>
             </form>
         </div>
         <div className="separator"></div>
@@ -88,7 +98,7 @@ const Login = () => {
                 <input type="text" placeholder="Username" name="username" />
                 <input type="text" placeholder="Email" name="email" />
                 <input type="password" placeholder="Password" name="password" />
-                <button>Sign Up</button>
+                <button disabled={loading}>{loading ? "Loading" : "Sign Up"}</button>
             </form>
         </div>
     </div>
