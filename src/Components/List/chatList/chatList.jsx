@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./chatList.css";
 import AddUser from "./addUser/addUser";
 import { useUserStore } from "../../../lib/userStore";
-import { onSnapshot, doc, Firestore, getDoc } from "firebase/firestore";
+import { onSnapshot, doc, updateDoc, getDoc } from "firebase/firestore";
 import { db } from "../../../lib/firebase";
 
 const ChatList = () => {
@@ -10,24 +10,25 @@ const ChatList = () => {
   const [chats, setChats] = useState([]);
   const { currentUser } = useUserStore();
   useEffect(() => {
-    const unSub = onSnapshot(doc(db, "userChats", currentUser.id),
-    async (res) => {
-      const items = res.data().chats;
+    const unSub = onSnapshot(
+      doc(db, "userChats", currentUser.id),
+      async (res) => {
+        const items = res.data().chats;
+        
+        const promises = items.map(async (item) => {
+          const userDocRef = doc(db, "users", item.receiverId); // fetching user data using snapShot() in google firebase.
+          const userDocSnap = await getDoc(userDocRef); // fetching user data using snapShot() in google firebase.
 
-      const promises = items.map(async (item) => {
-        const userDocRef = doc(db, "users", item.receiverId); // fetching user data using snapShot() in google firebase.
-        const userDocSnap = await getDoc(userDocRef); // fetching user data using snapShot() in google firebase.
+          const user = userDocSnap.data();
 
-        const user = userDocSnap.data();
+          return { ...item, user }; // return all the chatInformation and the user
+        });
 
-        return {...item, user}; // return all the chatInformation and the user
-      });
+        const chatData = await Promise.all(promises); // resolving the above function
 
-      const chatData = await Promise.all(promises); // resolving the above function
-
-      setChats(chatData.sort((a,b) => b.updatedAt - a.updatedAt)) // sorting to get the latest chats.
-    }
-  );
+        setChats(chatData.sort((a, b) => b.updatedAt - a.updatedAt)); // sorting to get the latest chats.
+      }
+    );
 
     return () => {
       unSub();
@@ -51,7 +52,7 @@ const ChatList = () => {
         />
       </div>
       {chats.map((chat) => {
-        <div className="item" key={chats.chatId}>
+        <div className="item" key={chat.chatId}>
           <img src="./avatar.png" alt="" />
           <div className="texts">
             <span>Manoj</span>
