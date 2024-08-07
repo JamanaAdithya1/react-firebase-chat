@@ -23,17 +23,26 @@ export const useChatStore = create((set) => ({
     }
 
     //check if the receiver is blocked
-    if (currentUser.blocked.includes(user.id)) {
+    else if (currentUser.blocked.includes(user.id)) {
       return set({
         chatId,
         user: user,
         isCurrentUserBlocked: false,
         isReceiverBlocked: true,
       });
+    } else {
+      // If neither of them are blocked
+      set({
+        chatId,
+        user,
+        isCurrentUserBlocked: false,
+        isReceiverBlocked: false,
+      });
     }
   },
 
-  changeBlock: () => { // change the state of the receiver from block to unblock or vice-versa when the block button is clicked
+  changeBlock: () => {
+    // change the state of the receiver from block to unblock or vice-versa when the block button is clicked
     set((state) => ({ ...state, isReceiverBlocked: !state.isReceiverBlocked }));
   },
 }));
